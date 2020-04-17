@@ -97,7 +97,29 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
+
+        # Use light to initiate memory.
+        # Move right comparing and swapping items bubble sort style.
+        # Compare items and move left if item is less than what compared to.
+        # Continue comparing and swapping until cannot move right anymore.
+        # Turn light off to break or clear memory when reach end of sort.
+
+        self.set_light_on()
+        self.swap_item()
+        while self.light_is_on():
+            while self.can_move_right():
+                self.move_right()
+                if self.compare_item() == 1:
+                    self.swap_item()
+            while self.compare_item() is not None:
+                self.move_left()
+            self.swap_item()
+            if self.can_move_right():
+                self.move_right()
+                self.swap_item()
+            else:
+                self.set_light_off()
+
 
 
 if __name__ == "__main__":
